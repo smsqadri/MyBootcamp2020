@@ -1,0 +1,21 @@
+name: Deploy First Surge website
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: install nodeJS
+      uses: actions/setup-node@v2-beta
+      with:
+       node-version: 12
+     name: install surge
+     run: npm install -g surge
+     name: run surge
+     run: surge ./ FirstBootcampproject.surge.sh --token $ {{secrets.First_Surge_token}}
