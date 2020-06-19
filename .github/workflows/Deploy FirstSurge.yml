@@ -11,20 +11,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      
     - name: Setup Node.js Environment
       uses: actions/setup-node@v2-beta
       with:
         node-version: 12
-     
-      name: GitHub Action for Yarn or npm
-      uses: Borales/actions-yarn@v2.1.0
-      with:
-        #Yarn Command
-        cmd: install #yarn install or npm install
-    
-    name: Creating Build
-      run: yarn build #yarn build or npm run-script build
 
     - name: Installing Surge
-      run: npm install -g surge  
-     run: surge ./ FirstBootcampproject.surge.sh --token $ {{secrets.First_Surge_token}}
+      run: npm install --global surge
+      
+      name: deploying using surge
+      
+      run: surge ./ FirstBootcampproject.surge.sh --token $ {{secrets.First_Surge_token}}
