@@ -20,6 +20,20 @@ jobs:
     - name: Installing Surge
       run: npm install --global surge
       
-      name: deploying using surge
+    - name: GitHub Action for Yarn or npm
+      uses: Borales/actions-yarn@v2.1.0
+      with:
+        #Yarn Command
+        cmd: install #yarn install or npm install
+
+    - name: Creating Build
+      run: yarn build #yarn build or npm run-script build
+
+    - name: Installing Surge
+      run: npm install -g surge
+
+    - name: Deploying on Surge
+      run: surge ./build FirstBootcampproject.surge.sh --token $ {{secrets.First_Surge_token}}
       
-      run: surge ./ FirstBootcampproject.surge.sh --token $ {{secrets.First_Surge_token}}
+        
+   
