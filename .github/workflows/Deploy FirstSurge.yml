@@ -21,6 +21,6 @@ jobs:
       run: npm install --global surge
       
     - name: Deploying on Surge
-      run: surge ./build FirstBootcampproject.surge.sh --token $ {{secrets.First_Surge_token}}
+      run: surge ./build FirstBootcampproject.surge.sh --token ${{secrets.FIRST_SURGE_TOKEN}}
       
    
